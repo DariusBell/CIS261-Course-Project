@@ -1,10 +1,16 @@
 # Darius Bell - CIS261 - Create and Call Functions with Parameters Viewed #
 
+def get_pay_period():
+    from_date = input("Enter FROM date (mm/dd/yy): ")
+    to_date = input("Enter TO date (mm/dd/yy): ")
+    return from_date, to_date
+
 def get_employee_name():
     return input("Enter employee name (or type 'End' to finish): ")
 
 
 def get_total_hours():
+
     return float(input("Enter total hours worked: "))
 
 
@@ -23,8 +29,9 @@ def calculate_pay(hours, rate, tax_rate):
     return gross_pay, income_tax, net_pay
 
 
-def display_employee_info(name, hours, rate, gross, tax_rate, tax, net):
+def display_employee_info(name, hours, rate, gross, tax_rate, tax, net, from_date, to_date):
     print("\n--- Employee Pay Information ---")
+    print(f"Pay Period: {from_date} to {to_date}")
     print(f"Name: {name}")
     print(f"Hours Worked: {hours}")
     print(f"Hourly Rate: ${rate:.2f}")
@@ -52,6 +59,7 @@ total_gross = 0
 total_tax = 0
 total_net = 0
 
+from_date, to_date = get_pay_period()
 while True:
     name = get_employee_name()
 
@@ -64,7 +72,7 @@ while True:
 
     gross, tax, net = calculate_pay(hours, rate, tax_rate)
 
-    display_employee_info(name, hours, rate, gross, tax_rate, tax, net)
+    display_employee_info(name, hours, rate, gross, tax_rate, tax, net, from_date, to_date)
 
     employee_count += 1
     total_hours += hours
@@ -73,3 +81,4 @@ while True:
     total_net += net
 
 display_totals(employee_count, total_hours, total_gross, total_tax, total_net)
+
