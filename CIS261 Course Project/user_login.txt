@@ -1,0 +1,4 @@
+dariusb|password|Admin
+davids|password1|User
+lamart|password|User
+taylor|password|User
